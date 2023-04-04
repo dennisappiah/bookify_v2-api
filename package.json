@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/app.js",
-    "dev": "nodemon app.ts",
+    "dev": "nodemon src/app.ts",
     "build": "tsc -p .",
     "test": "jest",
     "test:watch": "jest --watch --verbose"
