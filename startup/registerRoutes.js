@@ -1,0 +1,30 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.setupRoutes = void 0;
+const courses_1 = __importDefault(require("../routers/courses"));
+const books_1 = __importDefault(require("../routers/books"));
+const categories_1 = __importDefault(require("../routers/categories"));
+const customers_1 = __importDefault(require("../routers/customers"));
+const rentals_1 = __importDefault(require("../routers/rentals"));
+const users_1 = __importDefault(require("../routers/users"));
+const auth_1 = __importDefault(require("../routers/auth"));
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const errorHandlers_1 = require("../middlewares/errorHandlers");
+const setupRoutes = (app) => {
+    app.use(express_1.default.json());
+    app.use((0, cors_1.default)());
+    app.use(express_1.default.urlencoded({ extended: true }));
+    app.use('/api/courses', courses_1.default);
+    app.use('/api/books', books_1.default);
+    app.use('/api/categories/', categories_1.default);
+    app.use('/api/customers/', customers_1.default);
+    app.use('/api/rentals/', rentals_1.default);
+    app.use('/api/users/', users_1.default);
+    app.use('/api/auth/', auth_1.default);
+    app.use(errorHandlers_1.errorHandler);
+};
+exports.setupRoutes = setupRoutes;
