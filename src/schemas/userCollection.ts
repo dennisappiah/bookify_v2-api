@@ -50,10 +50,10 @@ export const User = mongoose.model<UserModel>("User", userSchema);
 
 export const validateUser = (user: UserModel) => {
   const schema = Joi.object({
-    name: Joi.string().min(5).max(50).required(),
     email: Joi.string().required().email(),
     // joi-password complexity for complex passwords
     password: Joi.string().min(5).max(255).required(),
+    name: Joi.string().min(5).max(50).required(),
     isAdmin: Joi.boolean(),
   });
 
